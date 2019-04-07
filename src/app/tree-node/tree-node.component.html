@@ -1,0 +1,7 @@
+<div id="tree-root" class="angular-ui-tree">
+  <ol class="angular-ui-tree-nodes" style="padding-left: 10px;">
+      <ng-container *ngFor="let node of nodes">
+        <app-tree-row [node]="node" [colNumber]="colNumber"></app-tree-row>
+      </ng-container>
+  </ol>
+</div>

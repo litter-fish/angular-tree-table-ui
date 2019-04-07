@@ -1,0 +1,37 @@
+<li class="">
+
+  <div class="row" id="{{node.id}}">
+    <ng-container *ngFor="let col of node.cols">
+      <div class="{{col[0].clazz}} branch expanded">
+        <ng-container *ngIf="col.length > 1">
+          <ng-container *ngFor="let c of col">
+            <div style="float:left;">
+              <app-tree-col
+                [col]="c"
+                [row]="node"
+                [hasChilderen]="node.childrens.length > 0"
+                [colNumber]="colNumber"
+              ></app-tree-col>
+            </div>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="col.length <= 1">
+          <ng-container *ngFor="let c of col">
+            <app-tree-col
+              [col]="c"
+              [row]="node"
+              [hasChilderen]="node.childrens.length > 0"
+              [colNumber]="colNumber"
+            ></app-tree-col>
+          </ng-container>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+
+  <ol class="angular-ui-tree-nodes" *ngIf="node.isShowChildrens">
+    <ng-container *ngFor="let row of node.childrens">
+      <app-tree-row [node]="row" [colNumber]="colNumber"></app-tree-row>
+    </ng-container>
+  </ol>
+</li>
